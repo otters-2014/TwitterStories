@@ -14,4 +14,8 @@ describe Stories do
   it 'should have tweets' do
     expect(story.tweets).to eq []
   end
+
+  it 'should have ratings' do
+    expect(story.ratings).to eq []
+  end
 end
