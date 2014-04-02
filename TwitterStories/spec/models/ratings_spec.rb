@@ -1,5 +1,7 @@
 require 'spec_helper'
 
-# describe Ratings do
-
-# end
+describe Rating do
+  it { should belong_to(:user) }
+  it {should belong_to(:rateable)}
+  it {should have_many(:comments)}
+end
