@@ -14,4 +14,8 @@ describe Tweets do
   it 'should have an average rating' do
     expect(tweet.rating_avg).to eq 3
   end
+
+  it 'should have (many) stories' do
+    expect(tweet.stories).to eq []
+  end
 end
