@@ -4,7 +4,6 @@ class CreateTweets < ActiveRecord::Migration
       t.integer :user_id
       t.text :text
       t.integer :rating_avg
-      t.datetime :tweet_time
 
       t.timestamps
     end
