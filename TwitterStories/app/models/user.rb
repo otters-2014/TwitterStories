@@ -1,3 +1,8 @@
 class User < ActiveRecord::Base
-  has_secure_password
+  has_secure_passwords
+
+  has_many :ratings
+  has_many :stories
+  has_many :tweets
+
 end
