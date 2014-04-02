@@ -18,4 +18,8 @@ describe Tweets do
   it 'should have (many) stories' do
     expect(tweet.stories).to eq []
   end
+
+  it 'should have ratings' do
+    expect(tweet.ratings).to eq []
+  end
 end
