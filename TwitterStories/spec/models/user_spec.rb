@@ -8,7 +8,7 @@ describe User do
 
   it 'should require a password and password confirmation' do
     u = User.new(username: "username", password: "password")
-    excpect(u.save).to eq false
+    expect(u.save).to eq false
   end
 
   it 'should not have the password saved in plain text' do
