@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe Ratings do
+# describe Ratings do
 
-end
+# end

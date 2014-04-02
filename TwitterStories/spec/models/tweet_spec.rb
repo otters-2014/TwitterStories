@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe Tweets do
+# describe Tweets do
 
-end
+# end

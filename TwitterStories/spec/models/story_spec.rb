@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe Stories do
+# describe Stories do
 
-end
+# end
