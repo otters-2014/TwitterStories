@@ -17,5 +17,6 @@ for the end of Thur. 4-3-14:
 
 Aim for (necessary) crud functionality with views by the end of the day
 
+![socrates schema](http://i.imgur.com/VhDuhYx.png)
 ![schema](http://i.imgur.com/mgx4aIS.jpg)
 ![project rules](http://i.imgur.com/WrZEWPa.jpg)
