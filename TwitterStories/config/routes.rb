@@ -1,9 +1,14 @@
 TwitterStories::Application.routes.draw do
 
-  # resources :tweets
-  get 'tweets/new' => 'tweets#new', as: :new_tweet
+  resources :tweets
+  get 'tweets' => 'tweets#index', as: :tweets
   post 'tweets' => 'tweets#create'
+  get 'tweets/new' => 'tweets#new', as: :new_tweet
+  get 'tweets/:id/edit' => 'tweets#edit', as: :edit_tweet
   get 'tweets/:id' => 'tweets#show', as: :tweet
+  patch 'tweets/:id' => 'tweets#update'
+  put 'tweets/:id' => 'tweets#update'
+  delete 'tweets/:id' => 'tweets#destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
