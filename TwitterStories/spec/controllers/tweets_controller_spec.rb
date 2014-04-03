@@ -20,6 +20,12 @@ describe TweetsController do
       subject.should redirect_to :action => :show,
                                   :id => assigns(:tweet).id
     end
+
+    it "saves new tweet and creates record" do
+      expect {
+        post:create, {:tweet => {'text'=> "sticky pooop... And I dont have any more bags. Help please"}}
+      }.to change(Tweet, :count).by(1)
+    end
   end
 
   describe '#show' do
