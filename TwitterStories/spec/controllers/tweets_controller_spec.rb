@@ -22,6 +22,19 @@ describe TweetsController do
     end
   end
 
+  describe '#show' do
+    it 'renders a post' do
+      id = "1"
+      tweet = double(:tweet)
+      Tweet
+        .should_receive(:find)
+        .with(id)
+        .and_return(tweet)
+
+      get :show, :id => id
+      expect(assigns(:tweet)).to eq tweet
+    end
+  end
 
 
 
