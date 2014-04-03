@@ -11,6 +11,26 @@ describe UsersController do
       expect(assigns(:user)).to eq user
     end
   end
+
+  describe '#create' do
+    params = {'username' => "superpoops", 'password' => "poopduh", 'password_confirmation' => "poopduh"}
+    let(:our_user) { User.new(params) }
+
+    it "redirects if user is created" do
+      User.should_receive(:create).with(params).and_return(our_user)
+
+      post(:create, user: params)
+      expect(response).to redirect_to user_path(our_user)
+    end
+
+    it "renders new user form if user isn't created" do
+      User.should_receive(:create).with(params).and_return(our_user)
+      our_user.should_receive(:save).and_return(false)
+      post(:create, user: params)
+      expect(response).to render_template(:new)
+    end
+  end
+
 end
 
 
