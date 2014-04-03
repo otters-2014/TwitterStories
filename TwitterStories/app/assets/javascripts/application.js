@@ -9,8 +9,14 @@
 //
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
-//
-//= require jquery
+//require jquery
+
+$(document).ready( function (){
+  //$(#form).click(function(event){
+    //event.preventDefault();
+  //});
+ });
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
