@@ -4,9 +4,7 @@ describe UsersController do
   describe '#new' do
     it "creates a new user" do
       user = double(:user)
-      User
-        .should_receive(:new)
-        .and_return(user)
+      User.should_receive(:new).and_return(user)
       get :new
       expect(assigns(:user)).to eq user
     end
@@ -31,6 +29,14 @@ describe UsersController do
     end
   end
 
+  describe '#show' do
+    it 'renders a post' do
+      user = double(:user)
+      User.should_receive(:find).with("1").and_return(user)
+      get :show, :id => "1"
+      expect(assigns(:user)).to eq user
+    end
+  end
 end
 
 
