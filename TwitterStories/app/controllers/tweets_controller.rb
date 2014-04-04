@@ -4,12 +4,8 @@ class TweetsController < ApplicationController
   end
 
   def create
-    @tweet = Tweet.new(tweet_params)
-    if @tweet.save
-      redirect_to @tweet
-    else
-      render 'new'
-    end
+    @tweet = Tweet.create(tweet_params)
+    render json: @tweet
   end
 
   def show
