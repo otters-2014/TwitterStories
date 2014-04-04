@@ -1,0 +1,41 @@
+<%= form_tag %>
+<% @tweets.each do |tweet| %>
+  <div class="tweet-item" id="tweet-item-#{tweet.id}">
+    <%= check_box_tag("tweet-#{tweet.id}") %>
+    <%= label_tag("tweet-#{tweet.id}", tweet.text) %>
+  </div>
+<% end %>
+
+
+
+<!-- <div class="container">
+  <form accept-charset="UTF-8" action="/stories/1" class="edit_story" id="edit_story_1" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="_method" type="hidden" value="patch"><input name="authenticity_token" type="hidden" value="lIkSCClmUzw8GwZooaw1Ry2/aTvM9KTyau+blKcDFp4="></div>
+      <div class="tweet-item" id="tweet-item-#{tweet.id}">
+        <input id="tweet1" name="tweet1" type="checkbox" value="1">
+        <label for="tweet1">Ian's first tweet</label>
+      </div>
+      <div class="tweet-item" id="tweet-item-#{tweet.id}">
+        <input id="tweet2" name="tweet2" type="checkbox" value="1">
+        <label for="tweet2">Ian's first tweet</label>
+      </div>
+      <div class="tweet-item" id="tweet-item-#{tweet.id}">
+        <input id="tweet3" name="tweet3" type="checkbox" value="1">
+        <label for="tweet3">Ian's first tweet</label>
+      </div>
+      <div class="tweet-item" id="tweet-item-#{tweet.id}">
+        <input id="tweet4" name="tweet4" type="checkbox" value="1">
+        <label for="tweet4">Ian's second tweet is even better than the first</label>
+      </div>
+      <div class="tweet-item" id="tweet-item-#{tweet.id}">
+        <input id="tweet5" name="tweet5" type="checkbox" value="1">
+        <label for="tweet5">Ian's third tweet is even better than the second and the first</label>
+      </div>
+      <div class="tweet-item" id="tweet-item-#{tweet.id}">
+        <input id="tweet6" name="tweet6" type="checkbox" value="1">
+        <label for="tweet6">Ian's fourth tweet is even better than the third and the second and the first</label>
+      </div>
+      <div class="tweet-item" id="tweet-item-#{tweet.id}">
+        <input id="tweet7" name="tweet7" type="checkbox" value="1">
+        <label for="tweet7">Ian's fifth tweet is even better than the fourth and the third and the second and the first</label>
+      </div>
+</form></div> -->
