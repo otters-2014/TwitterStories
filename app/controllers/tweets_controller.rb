@@ -4,7 +4,7 @@ class TweetsController < ApplicationController
   end
 
   def create
-    @tweet = Tweet.new(tweet_params)
+    @tweet = Tweet.new(:text => tweet_params[:text], :user_id => session[:user_id])
     if @tweet.save
       redirect_to @tweet
     else
