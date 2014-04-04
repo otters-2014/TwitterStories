@@ -10,5 +10,7 @@
 
 <%= yield %>
 
+<%= link_to 'sign in', new_session_path %>
+<%= link_to 'sign out', new_session_path, method: :delete %>
 </body>
 </html>
