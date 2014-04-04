@@ -2,8 +2,14 @@
 
 <%= link_to 'Edit Profile', edit_user_path %>
 
-#user.tweets
+<% if @user.tweets %>
+  <% @user.tweets.each do |tweet| %>
+    <p><%= tweet.text %></p>
+  <% end %>
+<% end %>
+
+<!-- #user.tweets
 #user.stories
 
 #create a new story
-#delete my account
+#delete my account -->
