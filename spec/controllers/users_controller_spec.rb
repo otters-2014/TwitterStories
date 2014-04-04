@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'rack_session_access/capybara'
 
 describe UsersController do
   describe '#new' do
@@ -27,7 +28,14 @@ describe UsersController do
       post(:create, user: params)
       expect(response).to render_template(:new)
     end
+
+    it "should store the new user in a session" do
+      User.should_receive(:create).with(params).and_return(our_user)
+      post(:create, user: params)
+      expect(session[:user_id]).to eq our_user.id
+    end
   end
+
 
   describe '#show' do
     it 'renders a post' do
@@ -36,7 +44,7 @@ describe UsersController do
       get :show, :id => "1"
       expect(assigns(:user)).to eq user
     end
+
+
   end
 end
-
-
