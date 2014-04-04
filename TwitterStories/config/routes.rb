@@ -1,6 +1,6 @@
 TwitterStories::Application.routes.draw do
 
-
+  root 'welcome#index'
   resources :users, except: :index
   resources :tweets
 
