@@ -2,6 +2,9 @@ require 'spec_helper'
 require 'rack_session_access/capybara'
 
 describe UsersController do
+  before(:each) do
+    session.clear
+  end
   describe '#new' do
     it "creates a new user" do
       user = double(:user)
@@ -12,27 +15,30 @@ describe UsersController do
   end
 
   describe '#create' do
-    params = {'username' => "superpoops", 'password' => "poopduh", 'password_confirmation' => "poopduh"}
-    let(:our_user) { User.create(params) }
+    params = {'username' => "zxcvvv", 'password' => "poopduh", 'password_confirmation' => "poopduh"}
+    let(:our_user) { User.create(params)}
 
     it "redirects if user is created" do
-      User.should_receive(:create).with(params).and_return(our_user)
-
+      user = our_user
+      User.should_receive(:new).with(params).and_return(user)
+      user.should_receive(:save).and_return(true)
       post(:create, user: params)
-      expect(response).to redirect_to user_path(our_user)
+      expect(response).to redirect_to user_path(user)
     end
 
-    it "renders new user form if user isn't created" do
-      User.should_receive(:create).with(params).and_return(our_user)
-      our_user.should_receive(:save).and_return(false)
+    it "redirects to homepage if user isn't created" do
+      user = our_user
+      User.should_receive(:new).with(params).and_return(user)
+      user.should_receive(:save).and_return(false)
       post(:create, user: params)
       expect(response).to redirect_to root_path
     end
 
     it "should store the new user in a session" do
-      User.should_receive(:create).with(params).and_return(our_user)
+      user = our_user
+      User.should_receive(:new).with(params).and_return(user)
       post(:create, user: params)
-      expect(session[:user_id]).to eq our_user.id
+      expect(session[:user_id]).to eq user.id
     end
   end
 

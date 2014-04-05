@@ -1,10 +1,13 @@
 require 'spec_helper'
 
 describe TweetsController do
+  before(:each) do
+    user = User.create(username: "pooplecake", password: "dogpoop", password_confirmation: "dogpoop")
+    session[:user_id] = user.id
+  end
 
   describe "#new" do
     it "should create new tweets for signed in user" do
-      current_user.stub
       tweet = double(:tweet)
       Tweet
         .should_receive(:new)
