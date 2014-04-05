@@ -1,10 +1,22 @@
-<%= form_tag %>
+<ul>
+
+    <% @story.tweets.each do |tweet| %>
+
+    <li>
+        <%=@tweet.text%>
+    </li>
+
+    <%end%>
+
+</ul>
+
+<!--<%= form_tag %>
 <% @tweets.each do |tweet| %>
   <div class="tweet-item" id="tweet-item-#{tweet.id}">
     <%= check_box_tag("tweet-#{tweet.id}") %>
     <%= label_tag("tweet-#{tweet.id}", tweet.text) %>
   </div>
-<% end %>
+<% end %> -->
 
 
 
