@@ -10,20 +10,48 @@
 <body>
   <header>
     <%= link_to "TwitterStories", root_path, class: "logo"   %>
-
-    <nav class="nav-bar">
+    <nav>
       <ul>
-        <li><%= link_to "Sign Up", new_user_path %></li>
-        <li><%= link_to 'Sign In', new_session_path %></li>
-        <li><%= link_to 'Sign Out', new_session_path, method: :delete %></li>
-        <li><a href="#">Profile</a></li>
+        <% if current_user %>
+          <li  id="logout">
+            <%= link_to 'Sign Out', new_session_path, method: :delete %>
+          <li>
+        <% else %>
+        <li id="login">
+          <%= link_to('#', id: "login-trigger") do  %>
+            Sign In <span>▼</span>
+          <% end %>
+          <div id="login-content">
+            <%= form_tag(sessions_path) do %>
+              <%= label_tag :username %>
+              <%= text_field_tag :username %> <br>
+              <%= label_tag :password %>
+              <%= password_field_tag :password %> <br>
+              <%= submit_tag "Sign In" %>
+            <% end %>
+          </div>
+        </li>
+        <li id="signup">
+          <%= link_to('#', id: "signup-trigger") do  %>
+            Sign Up <span>▼</span>
+          <% end %>
+          <div id="signup-content">
+            <%= form_for @user do |f| %>
+              <%= f.label :username%>
+              <%= f.text_field :username %> <br>
+              <%= f.label :password %>
+              <%= f.password_field :password %> <br>
+              <%= f.label :password_confirmation %>
+              <%= f.password_field :password_confirmation %> <br>
+              <%= f.submit "Sign Up" %>
+            <% end %>
+          </div>
+        </li>
+        <% end %>
       </ul>
     </nav>
   </header>
-
-
   <%= yield %>
-
   <footer>&#169;2014 TwitterStories All rights reserved.</footer>
 </body>
 </html>
