@@ -9,6 +9,12 @@ class StoriesController < ActionController::Base
  def show
    @story = Story.find(params[:id])
   end
+
+  def create
+    @story = Story.create
+  end
+
+
 end
 
 
