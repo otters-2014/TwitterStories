@@ -6,7 +6,10 @@ class StoriesController < ActionController::Base
   end
 
  def show
-    @story = Story.new
-    @tweets = Tweet.all
+   @story = Story.find(params[:id])
   end
 end
+
+
+ # @story = Story.new
+ #    @tweets = Tweet.all
