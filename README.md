@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/otters-2014/TwitterStories.svg?branch=master)](https://travis-ci.org/otters-2014/TwitterStories)
+
 TwitterStories
 ==============
 
