@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/otters-2014/TwitterStories.svg?branch=master)](https://travis-ci.org/otters-2014/TwitterStories)
 
+[![Coverage Status](http://coveralls.io/repos/otters-2014/TwitterStories/badge.png?branch=coveralls)](http://coveralls.io/r/otters-2014/TwitterStories?branch=coveralls)
+
 TwitterStories
 ==============
 
