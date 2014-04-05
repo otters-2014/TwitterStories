@@ -10,7 +10,8 @@
 
     <li><span class="ui-icon ui-icon-arrowthick-2-n-s"></span> <%=tweet.text%>
 
-        <%= check_box_tag(:added_to_story) %>
+        <%= f.check_box :tweets, {multiple: true}, tweet, nil %>
+
 
 
     </li>
