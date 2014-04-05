@@ -12,9 +12,8 @@ class StoriesController < ActionController::Base
   end
 
   def create
-    puts story_params
     @story = Story.create!(:title => story_params[:title], :user_id => session[:user_id])
-    # @story.tweets.concat(s)
+    story_params[:tweets].map{|tweet| @story.tweets << Tweet.find(tweet.to_i)}
     if @story.save
       redirect_to @story
     else
@@ -24,7 +23,7 @@ class StoriesController < ActionController::Base
 
   private
   def story_params
-    params.require(:story).permit(:title)
+    params.require(:story).permit(:title, tweets: [])
   end
 
 
