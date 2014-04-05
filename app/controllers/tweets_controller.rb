@@ -1,6 +1,11 @@
 class TweetsController < ApplicationController
   def new
-    @tweet = Tweet.new
+    if current_user
+      @user = current_user
+      @tweet = Tweet.new
+    else
+      redirect_to root_path
+    end
   end
 
   def create

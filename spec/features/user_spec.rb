@@ -8,13 +8,14 @@ feature "the homepage"  do
 
   scenario "the user can sign up" do
     visit root_path
-
-    expect {
-    fill_in("Username", with: "DanMan")
-    fill_in("Password", with: "danman")
-    fill_in("Password confirmation", with: "danman")
-    click_button("Sign Up")
-    }.to change(User, :count).by(1)
+    within( "#signup-content") do
+      expect {
+        fill_in("Username", with: "DanMan")
+        fill_in("Password", with: "danman")
+        fill_in("Password confirmation", with: "danman")
+        click_button("Sign Up")
+      }.to change(User, :count).by(1)
+    end
 
   end
 

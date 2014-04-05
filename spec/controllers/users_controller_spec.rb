@@ -13,7 +13,7 @@ describe UsersController do
 
   describe '#create' do
     params = {'username' => "superpoops", 'password' => "poopduh", 'password_confirmation' => "poopduh"}
-    let(:our_user) { User.new(params) }
+    let(:our_user) { User.create(params) }
 
     it "redirects if user is created" do
       User.should_receive(:create).with(params).and_return(our_user)
@@ -26,7 +26,7 @@ describe UsersController do
       User.should_receive(:create).with(params).and_return(our_user)
       our_user.should_receive(:save).and_return(false)
       post(:create, user: params)
-      expect(response).to render_template(:new)
+      expect(response).to redirect_to root_path
     end
 
     it "should store the new user in a session" do
