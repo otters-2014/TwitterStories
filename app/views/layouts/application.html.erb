@@ -10,45 +10,25 @@
 <body>
   <header>
     <%= link_to "TwitterStories", root_path, class: "logo"   %>
-
-    <nav class="nav-bar">
-      <ul>
-        <li><%= link_to "Sign Up", new_user_path %></li>
-        <li><%= link_to 'Sign In', new_session_path %></li>
-        <li><%= link_to 'Sign Out', new_session_path, method: :delete %></li>
-        <li><a href="#">Profile</a></li>
-      </ul>
-    </nav>
-
-
-
     <nav>
       <ul>
-
+        <% if current_user %>
+          <li  id="logout">
+            <%= link_to 'Sign Out', new_session_path, method: :delete %>
+          <li>
+        <% else %>
         <li id="login">
           <%= link_to('#', id: "login-trigger") do  %>
             Sign In <span>▼</span>
           <% end %>
           <div id="login-content">
             <%= form_tag(sessions_path) do %>
-  <%= label_tag :username %>
-  <%= text_field_tag :username %> <br>
-  <%= label_tag :password %>
-  <%= password_field_tag :password %> <br>
-  <%= submit_tag "Sign In" %>
-<% end %>
-            <!--
-
-                    <form>
-              <fieldset id="inputs">
-                <input id="username" type="email" name="Email" placeholder="Your email address" required>
-                <input id="password" type="password" name="Password" placeholder="Password" required>
-              </fieldset>
-              <fieldset id="actions">
-                <input type="submit" id="submit" value="Log in">
-                <label><input type="checkbox" checked="checked"> Keep me signed in</label>
-              </fieldset>
-            </form> -->
+              <%= label_tag :username %>
+              <%= text_field_tag :username %> <br>
+              <%= label_tag :password %>
+              <%= password_field_tag :password %> <br>
+              <%= submit_tag "Sign In" %>
+            <% end %>
           </div>
         </li>
         <li id="signup">
@@ -57,16 +37,17 @@
           <% end %>
           <div id="signup-content">
             <%= form_for @user do |f| %>
-  <%= f.label :username%>
-  <%= f.text_field :username %> <br>
-  <%= f.label :password %>
-  <%= f.password_field :password %> <br>
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %> <br>
-  <%= f.submit "Sign Up" %>
-<% end %>
+              <%= f.label :username%>
+              <%= f.text_field :username %> <br>
+              <%= f.label :password %>
+              <%= f.password_field :password %> <br>
+              <%= f.label :password_confirmation %>
+              <%= f.password_field :password_confirmation %> <br>
+              <%= f.submit "Sign Up" %>
+            <% end %>
           </div>
         </li>
+        <% end %>
       </ul>
     </nav>
 
