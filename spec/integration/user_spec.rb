@@ -3,12 +3,13 @@ require 'spec_helper'
 feature "new user" do
   scenario "the user can create an account" do
     visit new_user_path
+    within("#signup-content") do
+      fill_in('Username', with: 'superpoops')
+      fill_in('Password', with: 'shadowthemepoop')
+      fill_in('Password confirmation', with: 'shadowthemepoop')
 
-    fill_in('Username', with: 'superpoops')
-    fill_in('Password', with: 'shadowthemepoop')
-    fill_in('Password confirmation', with: 'shadowthemepoop')
-
-    click_button('Sign Up')
+      click_button('Sign Up')
+    end
 
     expect(current_path).to eq user_path(User.last)
 
