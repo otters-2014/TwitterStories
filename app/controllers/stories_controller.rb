@@ -2,6 +2,7 @@ class StoriesController < ActionController::Base
   layout "application"
 
   def new
+    @tweets = Tweet.all
     @story = Story.new
   end
 
