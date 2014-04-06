@@ -3,10 +3,14 @@
     "coverage": {
       "/Users/apprentice/Desktop/TwitterStories/app/helpers/application_helper.rb": [
         1,
+        1,
+        19,
+        null,
         null
       ],
       "/Users/apprentice/Desktop/TwitterStories/app/helpers/users_helper.rb": [
         1,
+        null,
         null
       ],
       "/Users/apprentice/Desktop/TwitterStories/app/controllers/sessions_controller.rb": [
@@ -33,6 +37,7 @@
         null
       ],
       "/Users/apprentice/Desktop/TwitterStories/app/controllers/application_controller.rb": [
+        1,
         1,
         null,
         null,
@@ -75,6 +80,11 @@
         1,
         1,
         2,
+        2,
+        2,
+        null,
+        0,
+        null,
         null,
         null,
         1,
@@ -100,21 +110,21 @@
         1,
         null,
         1,
-        4,
+        6,
         null,
         null,
         1,
-        5,
-        5,
-        4,
-        4,
+        7,
+        7,
+        6,
+        6,
         null,
         1,
         null,
         null,
         null,
         1,
-        4,
+        6,
         null,
         null,
         1,
@@ -129,7 +139,7 @@
         null,
         1,
         1,
-        5,
+        7,
         null,
         null
       ],
@@ -163,6 +173,7 @@
       "/Users/apprentice/Desktop/TwitterStories/app/models/user.rb": [
         1,
         1,
+        1,
         null,
         1,
         1,
@@ -174,11 +185,6 @@
         0,
         null,
         null,
-        null
-      ],
-      "/Users/apprentice/Desktop/TwitterStories/app/models/comment.rb": [
-        1,
-        1,
         null
       ],
       "/Users/apprentice/Desktop/TwitterStories/app/models/tweet_story.rb": [
@@ -188,8 +194,13 @@
         1,
         null,
         null
+      ],
+      "/Users/apprentice/Desktop/TwitterStories/app/models/comment.rb": [
+        1,
+        1,
+        null
       ]
     },
-    "timestamp": 1396740245
+    "timestamp": 1396742487
   }
 }
