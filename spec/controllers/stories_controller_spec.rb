@@ -68,4 +68,22 @@ describe StoriesController do
       expect(assigns(:story)).to eq our_story
     end
   end
+
+ describe "#destroy" do
+    let(:our_story) { Story.create(:title => "old title") }
+    let(:tweets) {Tweet.create(:text => "poopy poop")}
+
+    it "should delete a story" do
+      our_story.tweets = [tweets]
+      expect { delete :destroy, {:id => our_story.id} }.to change { Story.count }.by(-1)
+    end
+
+    it "should redirect to the posts index" do
+      delete :destroy, {:id => our_story.id}
+
+      expect(response).to redirect_to(stories_path)
+    end
+  end
+
+
 end

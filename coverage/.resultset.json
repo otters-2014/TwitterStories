@@ -87,6 +87,13 @@
         null,
         null,
         1,
+        2,
+        2,
+        null,
+        2,
+        null,
+        null,
+        1,
         1,
         6,
         null,
@@ -199,11 +206,6 @@
         null,
         null
       ],
-      "/Users/apprentice/Desktop/TwitterStories/app/models/comment.rb": [
-        1,
-        1,
-        null
-      ],
       "/Users/apprentice/Desktop/TwitterStories/app/models/tweet_story.rb": [
         1,
         null,
@@ -211,8 +213,13 @@
         1,
         null,
         null
+      ],
+      "/Users/apprentice/Desktop/TwitterStories/app/models/comment.rb": [
+        1,
+        1,
+        null
       ]
     },
-    "timestamp": 1396804569
+    "timestamp": 1396805526
   }
 }
