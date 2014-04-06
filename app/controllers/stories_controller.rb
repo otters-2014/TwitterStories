@@ -2,8 +2,9 @@ class StoriesController < ApplicationController
   layout "application"
 
   def new
+    user = User.find(session[:user_id])
     @story = Story.new
-    @tweets = Tweet.all
+    @tweets = user.tweets
   end
 
  def show
@@ -18,12 +19,36 @@ class StoriesController < ApplicationController
 
   def create
     @story = Story.create!(:title => story_params[:title], :user_id => session[:user_id])
-    story_params[:tweets].map{|tweet| @story.tweets << Tweet.find(tweet.to_i)}
+    @story.tweets = story_params[:tweets].map{|tweet|  Tweet.find(tweet.to_i)}
     if @story.save
       redirect_to @story
     else
       render 'new'
     end
+  end
+
+  def edit
+    user = User.find(session[:user_id])
+    @story = Story.find(params[:id])
+    @tweets = @story.tweets
+  end
+
+  def update
+    @story = Story.find(params[:id])
+    @story.update!(:title => story_params[:title])
+    @story.tweets  = story_params[:tweets].map{|tweet| Tweet.find(tweet.to_i)}
+    if @story.save
+      redirect_to @story
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @story = Story.find(params[:id])
+    @story.destroy
+
+    redirect_to stories_path
   end
 
   private
