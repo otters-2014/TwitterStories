@@ -1,0 +1,20 @@
+ <%=form_for @story do |f|%>
+
+ <%= f.label :title %> <%= f.text_field :title %>
+
+<ul id="sortable" >
+
+    <% @tweets.each do |tweet| %>
+
+    <li><span class="ui-icon ui-icon-arrowthick-2-n-s"></span> <%=tweet.text%>
+
+        <%= f.check_box :tweets, {multiple: true}, tweet.id, nil %>
+
+    </li>
+
+    <%end%>
+</ul>
+
+    <%= f.submit "Create" %>
+
+<%end%>

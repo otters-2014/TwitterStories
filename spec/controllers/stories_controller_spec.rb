@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe StoriesController do
+  before(:each) do
+    user = User.create(username: "pooplecake", password: "dogpoop", password_confirmation: "dogpoop")
+    session[:user_id] = user.id
+  end
 
   describe "#new" do
     it "should create new stories" do
@@ -53,4 +57,66 @@ describe StoriesController do
        expect(response). to redirect_to(story_path(Story.last))
     end
   end
+
+  describe "#edit" do
+    it "shoould assign @story" do
+
+      our_story = Story.create(:title => "Whatever works")
+
+      get :edit, :id => our_story.id
+
+      expect(assigns(:story)).to eq our_story
+    end
+  end
+
+  describe "#update" do
+    let(:our_story) { Story.create(:title => "old title") }
+    let(:tweets) {Tweet.create(:text => "poopy poop")}
+    it 'should edit a story with the params' do
+      title = "new story"
+      our_story.tweets = [tweets]
+
+      new_tweet = Tweet.create(:text => "another poop")
+
+      story_params = {"story" => {"title" => title, "tweets" => [new_tweet]}}
+
+      post :update, story_params.merge(:id => our_story.id.to_s)
+
+      our_story.reload
+      expect(our_story.title).to eq title
+      expect(our_story.tweets.first.text).to eq "another poop"
+    end
+
+    it 'should redirect to the show action' do
+      title = "new story"
+      our_story.tweets = [tweets]
+
+      new_tweet = Tweet.create(:text => "another poop")
+
+      story_params = {"story" => {"title" => title, "tweets" => [new_tweet]}}
+
+      post :update, story_params.merge(:id => our_story.id.to_s)
+
+      expect(response).to redirect_to(story_path(Story.last))
+    end
+  end
+
+
+ describe "#destroy" do
+    let(:our_story) { Story.create(:title => "old title") }
+    let(:tweets) {Tweet.create(:text => "poopy poop")}
+
+    it "should delete a story" do
+      our_story.tweets = [tweets]
+      expect { delete :destroy, {:id => our_story.id} }.to change { Story.count }.by(-1)
+    end
+
+    it "should redirect to the posts index" do
+      delete :destroy, {:id => our_story.id}
+
+      expect(response).to redirect_to(stories_path)
+    end
+  end
+
+
 end
