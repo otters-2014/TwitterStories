@@ -50,7 +50,38 @@ describe UsersController do
       get :show, :id => "1"
       expect(assigns(:user)).to eq user
     end
-
-
   end
+
+  describe '#update' do
+      params = {'username' => "zxcvvv", 'password' => "poopduh", 'password_confirmation' => "poopduh"}
+      let(:our_user) { User.create(params)}
+    it 'updates a user with the params' do
+      username = "MattBa"
+      password = "donuts4ever"
+      user_params = {'user' => {'username' => username , 'password' => password,'password_confirmation' => password }}
+      post :update, user_params.merge(:id => our_user.id.to_s)
+
+      our_user.reload
+      expect(our_user.username).to eq username
+      # expect(our_user.password).to eq password
+    end
+  end
+
 end
+
+
+  # describe "#update" do
+  #   let(:our_post) { Post.create(:title => "old title", :content => "old content") }
+  #   it "should edit a post with the params" do
+  #     title = "My post"
+  #     content = "content"
+
+  #     post_params = {"post" => {"title"=> title, "content" => content}}
+
+  #     # call the action
+  #     post :update, post_params.merge(:id => our_post.id.to_s)
+
+  #     our_post.reload
+  #     expect(our_post.title).to eq title
+  #     expect(our_post.content).to eq content
+  #   end
