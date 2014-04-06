@@ -18,13 +18,15 @@ class StoriesController < ApplicationController
   end
 
   def create
-    @story = Story.create!(:title => story_params[:title], :user_id => session[:user_id])
+    @story = Story.create(:title => story_params[:title], :user_id => session[:user_id])
     @story.tweets = story_params[:tweets].map{|tweet|  Tweet.find(tweet.to_i)}
     if @story.save
       redirect_to @story
-    else
-      render 'new'
+    # else
+    #   redirect_to new_story_path
     end
+    rescue NoMethodError
+      redirect_to new_story_path
   end
 
   def edit

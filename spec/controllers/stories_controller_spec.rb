@@ -44,6 +44,18 @@ describe StoriesController do
         post :create, story_params}.to change{ Story.count }.by(1)
     end
 
+    # it "should raise an error if story doesn't include tweets" do
+    #   our_story = double(:story)
+    #   story_params = {"story" => {"tweets" => nil}}
+    #   # Story.should_receive(:create).and_raise_error(our_story)
+    #   # expect{post :create, story_params}.to raise_error{NoMethodError}
+    #   expect{post :create, story_params}.to redirect_to(new_story_path)
+    # end
+
+    it 'should redirect to new if error thrown' do
+
+    end
+
     it "redirects to story_url(@story)" do
         tweet = Tweet.create(text: "poop")
       Tweet
@@ -54,7 +66,7 @@ describe StoriesController do
 
        post :create, story_params
 
-       expect(response). to redirect_to(story_path(Story.last))
+       expect(response).to redirect_to(story_path(Story.last))
     end
   end
 
