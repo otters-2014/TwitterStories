@@ -113,7 +113,6 @@ describe StoriesController do
     end
   end
 
-
  describe "#destroy" do
     let(:our_story) { Story.create(:title => "old title") }
     let(:tweets) {Tweet.create(:text => "poopy poop")}
