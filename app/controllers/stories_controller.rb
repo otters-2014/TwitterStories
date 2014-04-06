@@ -2,8 +2,9 @@ class StoriesController < ActionController::Base
   layout "application"
 
   def new
+    user = User.find(session[:user_id])
     @story = Story.new
-    @tweets = Tweet.all
+    @tweets = user.tweets
   end
 
  def show
@@ -19,6 +20,12 @@ class StoriesController < ActionController::Base
     else
       render 'new'
     end
+  end
+
+  def edit
+    user = User.find(session[:user_id])
+    @story = Story.find(params[:id])
+    @tweets = @story.tweets
   end
 
   private
