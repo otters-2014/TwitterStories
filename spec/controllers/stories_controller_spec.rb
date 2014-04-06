@@ -59,7 +59,7 @@ describe StoriesController do
   end
 
   describe "#edit" do
-    it "shoould assign @story" do
+    it "should assign @story" do
 
       our_story = Story.create(:title => "Whatever works")
 

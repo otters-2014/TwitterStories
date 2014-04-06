@@ -2,7 +2,7 @@ require 'spec_helper'
 
 feature "new user" do
   scenario "the user can create an account" do
-    visit new_user_path
+    visit root_path
     within("#signup-content") do
       fill_in('Username', with: 'superpoops')
       fill_in('Password', with: 'shadowthemepoop')

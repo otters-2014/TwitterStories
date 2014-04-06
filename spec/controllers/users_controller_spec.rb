@@ -5,14 +5,14 @@ describe UsersController do
   before(:each) do
     session.clear
   end
-  describe '#new' do
-    it "creates a new user" do
-      user = double(:user)
-      User.should_receive(:new).and_return(user)
-      get :new
-      expect(assigns(:user)).to eq user
-    end
-  end
+  # describe '#new' do
+  #   it "creates a new user" do
+  #     user = double(:user)
+  #     User.should_receive(:new).and_return(user)
+  #     get :new
+  #     expect(assigns(:user)).to eq user
+  #   end
+  # end
 
   describe '#create' do
     params = {'username' => "zxcvvv", 'password' => "poopduh", 'password_confirmation' => "poopduh"}

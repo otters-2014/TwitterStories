@@ -1,10 +1,10 @@
 TwitterStories::Application.routes.draw do
 
   root 'welcome#index' #PLACEHOLDER
-  resources :users, except: [:index, :new]
+  resources :users, except: [:index]
   resources :tweets, except: [:index, :edit, :update]
   resources :sessions, only: [:create, :destroy]
-  resources :stories, except: [:update]
+  resources :stories
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
