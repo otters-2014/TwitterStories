@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe StoriesController do
+  before(:each) do
+    user = User.create(username: "pooplecake", password: "dogpoop", password_confirmation: "dogpoop")
+    session[:user_id] = user.id
+  end
 
   describe "#new" do
     it "should create new stories" do
@@ -51,6 +55,17 @@ describe StoriesController do
        post :create, story_params
 
        expect(response). to redirect_to(story_path(Story.last))
+    end
+  end
+
+  describe "#edit" do
+    it "shoould assign @story" do
+
+      our_story = Story.create(:title => "Whatever works")
+
+      get :edit, :id => our_story.id
+
+      expect(assigns(:story)).to eq our_story
     end
   end
 end

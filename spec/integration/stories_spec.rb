@@ -2,6 +2,7 @@ require 'spec_helper'
 
 feature "making stories " do
 
+
   before(:each) do
     visit root_path
     within ('#signup-content') do  #this test is full of poop :D
@@ -12,7 +13,8 @@ feature "making stories " do
     end
   end
 
-  let(:tweet){Tweet.create(text: "something", user_id: 1)}
+  let(:user){User.find_by(username: "poop")}
+  let(:tweet){Tweet.create(text: "something", user_id: user.id)}
   scenario "user can create a new story" do
     our_tweet = tweet
 

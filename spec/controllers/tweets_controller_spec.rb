@@ -46,6 +46,4 @@ describe TweetsController do
     end
   end
 
-
-
 end

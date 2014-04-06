@@ -28,6 +28,17 @@ class StoriesController < ActionController::Base
     @tweets = @story.tweets
   end
 
+  def update
+    @story = Story.find(params[:id])
+    @story.update!(:title => story_params[:title])
+    story_params[:tweets].map{|tweet| @story.tweets << Tweet.find(tweet.to_i)}
+    if @story.save
+      redirect_to @story
+    else
+      render 'edit'
+    end
+  end
+
   private
   def story_params
     params.require(:story).permit(:title, tweets: [])

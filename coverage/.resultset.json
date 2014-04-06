@@ -51,6 +51,7 @@
         1,
         2,
         2,
+        2,
         null,
         null,
         1,
@@ -63,6 +64,23 @@
         6,
         3,
         3,
+        null,
+        0,
+        null,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
         null,
         0,
         null,
@@ -181,6 +199,11 @@
         null,
         null
       ],
+      "/Users/apprentice/Desktop/TwitterStories/app/models/comment.rb": [
+        1,
+        1,
+        null
+      ],
       "/Users/apprentice/Desktop/TwitterStories/app/models/tweet_story.rb": [
         1,
         null,
@@ -188,13 +211,8 @@
         1,
         null,
         null
-      ],
-      "/Users/apprentice/Desktop/TwitterStories/app/models/comment.rb": [
-        1,
-        1,
-        null
       ]
     },
-    "timestamp": 1396800274
+    "timestamp": 1396804569
   }
 }
