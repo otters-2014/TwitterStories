@@ -69,6 +69,39 @@ describe StoriesController do
     end
   end
 
+  describe "#update" do
+    let(:our_story) { Story.create(:title => "old title") }
+    let(:tweets) {Tweet.create(:text => "poopy poop")}
+    it 'should edit a story with the params' do
+      title = "new story"
+      our_story.tweets = [tweets]
+
+      new_tweet = Tweet.create(:text => "another poop")
+
+      story_params = {"story" => {"title" => title, "tweets" => [new_tweet]}}
+
+      post :update, story_params.merge(:id => our_story.id.to_s)
+
+      our_story.reload
+      expect(our_story.title).to eq title
+      expect(our_story.tweets.first.text).to eq "another poop"
+    end
+
+    it 'should redirect to the show action' do
+      title = "new story"
+      our_story.tweets = [tweets]
+
+      new_tweet = Tweet.create(:text => "another poop")
+
+      story_params = {"story" => {"title" => title, "tweets" => [new_tweet]}}
+
+      post :update, story_params.merge(:id => our_story.id.to_s)
+
+      expect(response).to redirect_to(story_path(Story.last))
+    end
+  end
+
+
  describe "#destroy" do
     let(:our_story) { Story.create(:title => "old title") }
     let(:tweets) {Tweet.create(:text => "poopy poop")}
