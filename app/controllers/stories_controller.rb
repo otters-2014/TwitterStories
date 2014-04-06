@@ -1,4 +1,4 @@
-class StoriesController < ActionController::Base
+class StoriesController < ApplicationController
   layout "application"
 
   def new
@@ -7,6 +7,11 @@ class StoriesController < ActionController::Base
   end
 
  def show
+  if current_user
+    @user = current_user
+  else
+    @user = User.new
+  end
    @story = Story.find(params[:id])
    puts params.inspect
   end
