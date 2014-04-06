@@ -68,7 +68,7 @@ class StoriesController < ApplicationController
     @story = Story.find(params[:id])
     @story.destroy
 
-    redirect_to stories_path
+    redirect_to user_path(current_user)
   end
 
   private

@@ -1,2 +1,5 @@
 <h1>  YOUR TWEET </h1>
 <p> <%=@tweet.text%>  </p>
+
+<%= link_to "tweet again", new_tweet_path %><br>
+<%= link_to "back", user_path(current_user) %>
