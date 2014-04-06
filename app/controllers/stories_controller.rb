@@ -14,7 +14,7 @@ class StoriesController < ActionController::Base
 
   def create
     @story = Story.create!(:title => story_params[:title], :user_id => session[:user_id])
-    story_params[:tweets].map{|tweet| @story.tweets << Tweet.find(tweet.to_i)}
+    @story.tweets = story_params[:tweets].map{|tweet|  Tweet.find(tweet.to_i)}
     if @story.save
       redirect_to @story
     else
@@ -31,7 +31,7 @@ class StoriesController < ActionController::Base
   def update
     @story = Story.find(params[:id])
     @story.update!(:title => story_params[:title])
-    story_params[:tweets].map{|tweet| @story.tweets << Tweet.find(tweet.to_i)}
+    @story.tweets  = story_params[:tweets].map{|tweet| Tweet.find(tweet.to_i)}
     if @story.save
       redirect_to @story
     else
