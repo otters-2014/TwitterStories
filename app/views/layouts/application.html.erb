@@ -13,9 +13,10 @@
     <nav>
       <ul>
         <% if current_user %>
-          <li  id="logout">
-            <%= link_to 'Sign Out', session_path, method: :delete %>
-          <li>
+          <li  id="signup" ><%= link_to 'Profile', user_path(current_user) %></li>
+          <li  id="signup">
+            <%= link_to 'Sign Out', session_path(current_user), method: :delete %>
+          </li>
         <% else %>
         <li id="login">
           <%= link_to('#', id: "login-trigger") do  %>
