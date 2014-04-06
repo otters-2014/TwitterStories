@@ -65,23 +65,16 @@ describe UsersController do
       expect(our_user.username).to eq username
       # expect(our_user.password).to eq password
     end
+
+    it "should redirect to the show action" do
+      username = "MattBa"
+      password = "donuts4ever"
+      user_params = {'user' => {'username' => username , 'password' => password,'password_confirmation' => password }}
+      post :update, user_params.merge(:id => our_user.id.to_s)
+
+    expect(response).to redirect_to(user_path(User.last))
+
+    end
   end
 
 end
-
-
-  # describe "#update" do
-  #   let(:our_post) { Post.create(:title => "old title", :content => "old content") }
-  #   it "should edit a post with the params" do
-  #     title = "My post"
-  #     content = "content"
-
-  #     post_params = {"post" => {"title"=> title, "content" => content}}
-
-  #     # call the action
-  #     post :update, post_params.merge(:id => our_post.id.to_s)
-
-  #     our_post.reload
-  #     expect(our_post.title).to eq title
-  #     expect(our_post.content).to eq content
-  #   end
