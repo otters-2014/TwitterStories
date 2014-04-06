@@ -1,7 +1,7 @@
 TwitterStories::Application.routes.draw do
 
   root 'welcome#index' #PLACEHOLDER
-  resources :users, except: [:index, :new, :show]
+  resources :users, except: [:index, :new]
   resources :tweets, except: [:index, :edit, :update]
   resources :sessions, only: [:create, :destroy]
   resources :stories, except: [:update]

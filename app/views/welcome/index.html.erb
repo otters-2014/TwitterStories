@@ -1,0 +1,6 @@
+<h1> look at some interesting stories </h1>
+<ul>
+<% Story.all.each do |story| %>
+  <li><%= link_to story.title, story_path(story) %> </li>
+<% end %>
+</ul>
