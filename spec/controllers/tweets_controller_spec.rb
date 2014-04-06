@@ -15,6 +15,11 @@ describe TweetsController do
       post :new
       expect(assigns(:tweet)).to eq tweet
     end
+    it "should redirect not-signed-in user to the homepage" do
+      session.clear
+      get :new
+      should redirect_to root_path
+    end
   end
 
   describe "#create" do
@@ -27,8 +32,16 @@ describe TweetsController do
 
     it "saves new tweet and creates record" do
       expect {
-        post:create, {:tweet => {'text'=> "sticky pooop... And I dont have any more bags. Help please"}}
+        post :create, {:tweet => {'text'=> "sticky pooop... And I dont have any more bags. Help please"}}
       }.to change(Tweet, :count).by(1)
+    end
+
+    it "redirects from an invalid tweet back to new tweet page" do
+      our_tweet = Tweet.new
+      Tweet.should_receive(:new).and_return(our_tweet)
+      our_tweet.should_receive(:save).and_return(false)
+
+      expect(subject).to render_template('new')
     end
   end
 
