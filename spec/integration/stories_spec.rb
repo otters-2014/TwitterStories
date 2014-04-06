@@ -17,7 +17,6 @@ feature "making stories " do
     our_tweet = tweet
 
     visit new_story_path
-    save_and_open_page
 
     fill_in( 'Title', with: "a poopy day")
 
