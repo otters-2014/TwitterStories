@@ -134,9 +134,9 @@
         null,
         null,
         1,
-        0,
-        0,
-        0,
+        2,
+        2,
+        2,
         null,
         null,
         1,
@@ -181,12 +181,6 @@
         1,
         1,
         null,
-        null,
-        1,
-        0,
-        0,
-        null,
-        null,
         null
       ],
       "/Users/apprentice/Desktop/TwitterStories/app/models/tweet_story.rb": [
@@ -214,6 +208,6 @@
         null
       ]
     },
-    "timestamp": 1396808136
+    "timestamp": 1396800274
   }
 }
