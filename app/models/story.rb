@@ -3,5 +3,5 @@ class Story < ActiveRecord::Base
   belongs_to :user
   has_many :tweet_stories
   has_many :tweets, through: :tweet_stories
-
+  accepts_nested_attributes_for :tweets
 end
