@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe TweetsController do
   before(:each) do
-    user = User.create(username: "pooplecake", password: "dogpoop", password_confirmation: "dogpoop")
+    user = User.create(username: "somethingpoop", password: "dogpoop", password_confirmation: "dogpoop")
     session[:user_id] = user.id
   end
 

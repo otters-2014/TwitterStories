@@ -6,6 +6,18 @@ describe UsersController do
     session.clear
   end
 
+  describe '#new' do
+    it 'should assign an empty user' do
+      id = '1'
+      user = double(:user)
+      User
+        .should_receive(:new)
+        .and_return(user)
+      get :new
+      expect(assigns(:user)).to eq user
+    end
+  end
+
   describe '#create' do
     params = {'username' => "zxcvvv", 'password' => "poopduh", 'password_confirmation' => "poopduh"}
     let(:our_user) { User.create(params)}

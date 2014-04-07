@@ -2,8 +2,9 @@ require 'spec_helper'
 
 describe StoriesController do
   before(:each) do
-    user = User.create(username: "pooplecake", password: "dogpoop", password_confirmation: "dogpoop")
+    user = User.create(username: "somepoop", password: "dogpoop", password_confirmation: "dogpoop")
     session[:user_id] = user.id
+    @user = user
   end
 
   describe "#new" do
@@ -72,31 +73,36 @@ describe StoriesController do
 
   describe "#edit" do
     it "should assign @story" do
-
+      user = @user
+      tweets = Tweet.create(:text => "poopy poop")
       our_story = Story.create(:title => "Whatever works")
-
+      our_story.tweets = [tweets]
       get :edit, :id => our_story.id
 
       expect(assigns(:story)).to eq our_story
+      expect(assigns(:tweets)).to eq our_story.tweets
     end
   end
 
+  let(:user) {User.create(username:"poopy", password: "otterpoo", password_confirmation: "otterpoo")}
+  let(:our_story) { Story.create(:title => "old title", user_id: user.id) }
+  let(:tweets) {Tweet.create(:text => "poopy poop")}
   describe "#update" do
-    let(:our_story) { Story.create(:title => "old title") }
-    let(:tweets) {Tweet.create(:text => "poopy poop")}
+
     it 'should edit a story with the params' do
       title = "new story"
-      our_story.tweets = [tweets]
+      a_story = our_story
+      a_story.tweets = [tweets]
 
       new_tweet = Tweet.create(:text => "another poop")
 
       story_params = {"story" => {"title" => title, "tweets" => [new_tweet]}}
 
-      post :update, story_params.merge(:id => our_story.id.to_s)
+      post :update, story_params.merge(:id => a_story.id.to_s)
 
-      our_story.reload
-      expect(our_story.title).to eq title
-      expect(our_story.tweets.first.text).to eq "another poop"
+      a_story.reload
+      expect(a_story.title).to eq title
+      expect(a_story.tweets.first.text).to eq "another poop"
     end
 
     it 'should redirect to the show action' do
@@ -114,18 +120,16 @@ describe StoriesController do
   end
 
  describe "#destroy" do
-    let(:our_story) { Story.create(:title => "old title") }
-    let(:tweets) {Tweet.create(:text => "poopy poop")}
-
     it "should delete a story" do
       our_story.tweets = [tweets]
       expect { delete :destroy, {:id => our_story.id} }.to change { Story.count }.by(-1)
     end
 
-    it "should redirect to the posts index" do
-      delete :destroy, {:id => our_story.id}
+    it "should redirect to the user page" do
+      a_story = our_story
+      delete :destroy, {:id => a_story.id}
 
-      expect(response).to redirect_to(stories_path)
+      expect(response).to redirect_to(user_path(@user.id))
     end
   end
 

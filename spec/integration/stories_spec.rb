@@ -14,7 +14,7 @@ feature "making stories " do
   end
 
   let(:user){User.find_by(username: "poop")}
-  let(:tweet){Tweet.create(text: "something", user_id: user.id)}
+  let(:tweet){Tweet.create(text: "something about poop", user_id: user.id)}
   scenario "user can create a new story" do
     our_tweet = tweet
 
@@ -30,5 +30,33 @@ feature "making stories " do
     expect(current_path).to eq story_path(Story.last)
 
     expect(page).to have_content("a poopy day")
+  end
+
+
+  scenario "user can delete stories" do
+    story = Story.create(title: "something", user_id: user.id)
+    story.tweets = [tweet]
+    visit story_path(story.id)
+
+    click_link("delete story")
+
+    expect(current_path).to eq user_path(user.id)
+  end
+
+  scenario "user can go back to profile from story#new" do
+    visit new_story_path
+
+    click_link("back")
+
+    expect(current_path).to eq user_path(user.id)
+  end
+
+  scenario "user can go back to profile from story#show" do
+    story = Story.create(title: "something", user_id: user.id)
+    visit story_path(story.id)
+
+    click_link("back")
+
+    expect(current_path).to eq user_path(user.id)
   end
 end
