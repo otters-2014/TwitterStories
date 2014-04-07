@@ -73,12 +73,14 @@ describe StoriesController do
 
   describe "#edit" do
     it "should assign @story" do
-
+      user = @user
+      tweets = Tweet.create(:text => "poopy poop")
       our_story = Story.create(:title => "Whatever works")
-
+      our_story.tweets = [tweets]
       get :edit, :id => our_story.id
 
       expect(assigns(:story)).to eq our_story
+      expect(assigns(:tweets)).to eq our_story.tweets
     end
   end
 

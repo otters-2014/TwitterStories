@@ -228,6 +228,17 @@
         null,
         null
       ],
+      "/Users/apprentice/Desktop/TwitterStories/app/controllers/welcome_controller.rb": [
+        1,
+        1,
+        11,
+        0,
+        null,
+        11,
+        null,
+        null,
+        null
+      ],
       "/Users/apprentice/Desktop/TwitterStories/app/models/tweet_story.rb": [
         1,
         null,
@@ -240,19 +251,8 @@
         1,
         1,
         null
-      ],
-      "/Users/apprentice/Desktop/TwitterStories/app/controllers/welcome_controller.rb": [
-        1,
-        1,
-        11,
-        0,
-        null,
-        11,
-        null,
-        null,
-        null
       ]
     },
-    "timestamp": 1396828362
+    "timestamp": 1396829391
   }
 }
