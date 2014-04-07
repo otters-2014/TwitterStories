@@ -5,3 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+user = User.create( :username => Faker::Name.name,
+             :password => 'password',
+             :password_confirmation => 'password'
+)
+
+10000.times{Tweet.create(:text => Faker::Lorem.sentence, :user_id => user.id)}

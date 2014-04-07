@@ -16,6 +16,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @user_tweets = Rails.cache.read "user_tweets"
+    if @user_tweets
+    else
+      Rails.cache.write "user_tweets", @user.tweets.map{|t| t.text}
+      @user_tweets = Rails.cache.read "user_tweets"
+    end
   end
 
   def edit

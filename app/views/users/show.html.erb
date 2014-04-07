@@ -4,9 +4,9 @@
 <%= link_to 'New Tweet', new_tweet_path %><br>
 <%= link_to 'New Story', new_story_path %>
 
-<% if @user.tweets %>
-  <% @user.tweets.each do |tweet| %>
-    <p><%= tweet.text %></p>
+<% if @user_tweets %>
+  <% @user_tweets.each do |tweet| %>
+    <p><%= tweet %></p>
   <% end %>
 <% end %>
 
