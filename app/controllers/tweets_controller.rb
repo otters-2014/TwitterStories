@@ -9,7 +9,9 @@ class TweetsController < ApplicationController
   end
 
   def create
-    @tweet = Tweet.new(:text => tweet_params[:text], :user_id => session[:user_id])
+    @tweet = Tweet.create!(:text => tweet_params[:text], :user_id => session[:user_id])
+    puts tweet_params[:tag_list].to_s
+    @tweet.tag_list = tweet_params[:tag_list]
     if @tweet.save
       redirect_to @tweet
     else
@@ -23,6 +25,6 @@ class TweetsController < ApplicationController
 
 private
   def tweet_params
-    params.require(:tweet).permit(:text)
+    params.require(:tweet).permit(:text, :tag_list)
   end
 end
